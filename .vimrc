@@ -5,17 +5,22 @@ set nocompatible
 set dir=~/tmp,/var/tmp,/tmp,.
 
 " misc
-set ts=4 noet sw=4 autoindent
+set ts=4 noet sw=4
+set laststatus=2
 syntax on
 
 " plugins
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'Shougo/denite.nvim'      " buffer explorer
-Plugin 'Garethp/vdebug'          " debugger
-Plugin 'moll/vim-bbye'           " close buffer w/o closing window
-Plugin 'tpope/vim-commentary'    " comment code in many languages
+Plugin 'Shougo/denite.nvim'             " buffer explorer
+Plugin 'Garethp/vdebug'                 " debugger
+Plugin 'moll/vim-bbye'                  " close buffer w/o closing window
+Plugin 'tpope/vim-commentary'           " comment code in many languages
+Plugin 'rayburgemeestre/phpfolding.vim' " folding methods for PHP
+Plugin 'StanAngeloff/php.vim'           " PHP syntax
+Plugin 'ciaranm/detectindent'           " set ts, et and sw automatically
+Plugin 'itchyny/lightline.vim'          " status line
 call vundle#end()
 filetype plugin indent on
 
@@ -47,8 +52,16 @@ nnoremap <Leader> :Denite file_rec
 " moll/vim-bbyeA
 nnoremap <Leader>q :Bdelete
 
+" ciaranm/detectindent
+" preferred settings when not autodetected
+let g:detectindent_preferred_expandtab  = 0
+let g:detectindent_preferred_indent     = 4
+let g:detectindent_max_lines_to_analyse = 1024
+" autodetect on buffer read
+autocmd BufReadPost * :DetectIndent | set smartindent
 
-
+" itchyny/lightline.vim
+set noshowmode
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let @j="/btn btn_buy^M\"iPn>>o^D<%}%>^[^J"
