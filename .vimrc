@@ -5,6 +5,7 @@ set nocompatible
 set dir=~/tmp,/var/tmp,/tmp,.
 
 " misc
+set hidden
 set ts=4 noet sw=4
 set laststatus=2
 syntax on
@@ -13,6 +14,7 @@ syntax on
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'           " plugin manager
 Plugin 'Shougo/denite.nvim'             " buffer explorer
 Plugin 'Garethp/vdebug'                 " debugger
 Plugin 'moll/vim-bbye'                  " close buffer w/o closing window
@@ -51,17 +53,22 @@ nnoremap <Leader> :Denite file_rec
 
 " moll/vim-bbyeA
 nnoremap <Leader>q :Bdelete
+nnoremap <Leader>d :Bdelete
 
 " ciaranm/detectindent
 " preferred settings when not autodetected
 let g:detectindent_preferred_expandtab  = 0
 let g:detectindent_preferred_indent     = 4
 let g:detectindent_max_lines_to_analyse = 1024
+let g:detectindent_preferred_when_mixed = 1
 " autodetect on buffer read
 autocmd BufReadPost * :DetectIndent | set smartindent
 
 " itchyny/lightline.vim
 set noshowmode
+
+" netrw
+nnoremap <Leader>e :Explore
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let @j="/btn btn_buy^M\"iPn>>o^D<%}%>^[^J"

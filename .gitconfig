@@ -2,10 +2,14 @@
 	email = b.dubrovskiy@qsoft.ru
 	name = Boris Dubrovskiy
 [alias]
-	a = add
-	st = status --untracked-files=no
+	a  = add
+	st  = status --untracked-files=no
 	cmt = commit
-	br = branch
-	co = checkout
+	br  = branch
+	co  = checkout
+	re  = reset
+	fe  = fetch
+	ps  = push
+	pl  = pull
 [core]
 	editor = vi
