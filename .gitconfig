@@ -8,8 +8,12 @@
 	br  = branch
 	co  = checkout
 	re  = reset
+	rs  = reset
 	fe  = fetch
+	me  = merge
+	mrg = merge
 	ps  = push
 	pl  = pull
+	cpk = cherry-pick
 [core]
 	editor = vi
