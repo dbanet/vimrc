@@ -12,6 +12,8 @@
 	fe  = fetch
 	me  = merge
 	mrg = merge
+	d   = diff
+	ds  = diff --staged
 	ps  = push
 	pl  = pull
 	cpk = cherry-pick
