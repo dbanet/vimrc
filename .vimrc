@@ -6,24 +6,22 @@ set dir=~/tmp,/var/tmp,/tmp,.
 
 " misc
 set hidden
-set ts=4 noet sw=4
+" set ts=4 noet sw=4
+set ts=4 et sw=4
 set laststatus=2
 syntax on
 
 " plugins
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'           " plugin manager
-Plugin 'Shougo/denite.nvim'             " buffer explorer
-Plugin 'Garethp/vdebug'                 " debugger
-Plugin 'moll/vim-bbye'                  " close buffer w/o closing window
-Plugin 'tpope/vim-commentary'           " comment code in many languages
-Plugin 'rayburgemeestre/phpfolding.vim' " folding methods for PHP
-Plugin 'StanAngeloff/php.vim'           " PHP syntax
-Plugin 'ciaranm/detectindent'           " set ts, et and sw automatically
-Plugin 'itchyny/lightline.vim'          " status line
-call vundle#end()
+call plug#begin()
+Plug 'Shougo/denite.nvim'             " buffer explorer
+Plug 'joonty/vdebug'                  " debugger
+Plug 'moll/vim-bbye'                  " close buffer w/o closing window
+Plug 'tpope/vim-commentary'           " comment code in many languages
+Plug 'rayburgemeestre/phpfolding.vim' " folding methods for PHP
+Plug 'StanAngeloff/php.vim'           " PHP syntax
+Plug 'itchyny/lightline.vim'          " status line
+call plug#end()
 filetype plugin indent on
 
 " misc
@@ -57,20 +55,18 @@ nnoremap <Leader>d :Bdelete
 
 " ciaranm/detectindent
 " preferred settings when not autodetected
-let g:detectindent_preferred_expandtab  = 0
-let g:detectindent_preferred_indent     = 4
-let g:detectindent_max_lines_to_analyse = 1024
-let g:detectindent_preferred_when_mixed = 1
+" let g:detectindent_preferred_expandtab  = 0
+" let g:detectindent_preferred_indent     = 4
+" let g:detectindent_max_lines_to_analyse = 1024
+" let g:detectindent_preferred_when_mixed = 1
 " autodetect on buffer read
-autocmd BufReadPost * :DetectIndent | set smartindent
+" autocmd BufReadPost * :DetectIndent | set smartindent
 
 " itchyny/lightline.vim
 set noshowmode
 
 " netrw
 nnoremap <Leader>e :Explore
+nnoremap - :Explore
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let @j="/btn btn_buy^M\"iPn>>o^D<%}%>^[^J"
-let @k="/btn btn_buy^M\"oPn>>o^D<%}%>^[^J"
-let @u="data-is-alco-item=\"<?=$arElement['PROPERTIES']['IS_ALCO_ITEM'][\"VALUE\"]?>\"^J"

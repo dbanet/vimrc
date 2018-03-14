@@ -6,6 +6,7 @@
 	st  = status --untracked-files=no
 	cmt = commit
 	br  = branch
+    cbr = rev-parse --abbrev-ref HEAD
 	co  = checkout
 	re  = reset
 	rs  = reset
