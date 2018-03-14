@@ -26,9 +26,6 @@ filetype plugin indent on
 
 " misc
 let mapleader=" "
-command W w | !git a %
-command Wq w | !git a % | q
-command Wc w | !git a % | close
 
 " Shift-Y to yank current file path
 :nmap Y :let @"=expand("%")
@@ -36,18 +33,35 @@ command Wc w | !git a % | close
 " expression %% expands to current file's directory
 cabbr <expr> %% expand("%:p:h")
 
+" git
+command W w  | !git a %
+command Wq w | !git a % | q
+command Wc w | !git a % | close
+nnoremap <Leader>gs  :!git st
+nnoremap <Leader>ga  :!git add %
+nnoremap <Leader>gd  :!git diff %
+nnoremap <Leader>gD  :!git diff --staged %
+nnoremap <Leader>gds :!git diff --staged
+
 " Shougo/denite.nvim
 call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
 call denite#custom#map('normal', '<Esc>', '<NOP>', 'noremap')
+
 call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
 call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
+
 call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<Tab>', '<denite:move_to_next_line>', 'noremap')
+
 call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
 call denite#custom#map('insert', '<S-Tab>', '<denite:move_to_previous_line>', 'noremap')
 
+call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+call denite#custom#var('file_rec/git', 'command', ['git', 'ls-files', '-co', '--exclude-standard'])
+
 nnoremap <Leader><Space> :Denite buffer
-nnoremap <Leader> :Denite file_rec
+nnoremap <Leader><Tab>   :Denite file_mru
+nnoremap <Leader>      :Denite `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`
 
 " moll/vim-bbyeA
 nnoremap <Leader>q :Bdelete
@@ -68,5 +82,9 @@ set noshowmode
 " netrw
 nnoremap <Leader>e :Explore
 nnoremap - :Explore
+
+" term
+nnoremap <Leader>s :terminal
+nnoremap <Leader>S :terminal
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
