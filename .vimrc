@@ -87,4 +87,10 @@ nnoremap - :Explore
 nnoremap <Leader>s :terminal
 nnoremap <Leader>S :terminal
 
+" faster movement
+nnoremap <c-k> {
+nnoremap <c-j> }
+map <c-h> gT
+map <c-l> gt
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
